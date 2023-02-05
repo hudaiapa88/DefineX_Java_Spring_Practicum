@@ -22,7 +22,7 @@ public class RepoLoader {
         for(int i=0;i<10;i++){
             Apartment apartment= new Apartment();
             Integer roomNumber= new Random().nextInt(5)+1;
-            apartment.setId(UUID.randomUUID().getLeastSignificantBits());
+            apartment.setId(UUID.randomUUID().toString());
             apartment.setTitle(values.get(new Random().nextInt(values.size())) +" Satılık daire "+roomNumber+"1");
             apartment.setPrice(new BigDecimal(new Random().nextInt(500000)+200000));
             apartment.setAdvertisementDate(LocalDate.now().minusMonths(new Random().nextInt(4)+1));
@@ -38,7 +38,7 @@ public class RepoLoader {
         for(int i=0;i<10;i++){
             SummerHouse summerHouse= new SummerHouse();
             Integer roomNumber= new Random().nextInt(5)+1;
-            summerHouse.setId(UUID.randomUUID().getLeastSignificantBits());
+            summerHouse.setId(UUID.randomUUID().toString());
             summerHouse.setTitle(values.get(new Random().nextInt(values.size())) +" Satılık yazlık "+roomNumber+"1");
             summerHouse.setPrice(new BigDecimal(new Random().nextInt(1000000)+500000));
             summerHouse.setAdvertisementDate(LocalDate.now().minusMonths(new Random().nextInt(4)+1));
@@ -54,7 +54,7 @@ public class RepoLoader {
         for(int i=0;i<10;i++){
             Villa villa= new Villa();
             Integer roomNumber= new Random().nextInt(7)+1;
-            villa.setId(UUID.randomUUID().getLeastSignificantBits());
+            villa.setId(UUID.randomUUID().toString());
             villa.setTitle(values.get(new Random().nextInt(values.size())) +" Satılık villa "+roomNumber+"1");
             villa.setPrice(new BigDecimal(new Random().nextInt(1000000)+500000));
             villa.setTotalFloorNumber(new Random().nextInt(3)+1);

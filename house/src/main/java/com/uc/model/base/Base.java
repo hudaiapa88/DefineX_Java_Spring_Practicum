@@ -9,5 +9,5 @@ import lombok.experimental.SuperBuilder;
 @Data
 @ToString(callSuper = true)
 public class Base {
-    Long id;
+    String id;
 }
