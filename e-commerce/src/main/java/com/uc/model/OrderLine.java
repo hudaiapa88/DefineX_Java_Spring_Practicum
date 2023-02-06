@@ -7,7 +7,7 @@ import lombok.ToString;
 import java.math.BigDecimal;
 
 @Data
-@ToString
+@ToString(callSuper = true)
 public class OrderLine extends BaseId {
     private Product product;
     private Integer quantity;

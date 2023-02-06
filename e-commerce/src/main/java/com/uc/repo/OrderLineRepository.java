@@ -1,14 +1,16 @@
 package com.uc.repo;
 
+import com.uc.exception.NotFoundException;
 import com.uc.model.Bill;
 import com.uc.model.Customer;
 import com.uc.model.OrderLine;
 import com.uc.repo.base.BaseRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class OrderLineRepository implements BaseRepository<OrderLine,Long> {
-    private static List<OrderLine> orderLines;
+public class OrderLineRepository implements BaseRepository<OrderLine,String> {
+    private static List<OrderLine> orderLines= new ArrayList<>();;
     private static OrderLineRepository instance;
 
     public static OrderLineRepository getInstance(){
@@ -22,21 +24,21 @@ public class OrderLineRepository implements BaseRepository<OrderLine,Long> {
 
     @Override
     public List<OrderLine> findAll() {
-        return null;
+        return orderLines;
     }
 
     @Override
-    public OrderLine findById(Long aLong) {
-        return null;
+    public OrderLine findById(String id) {
+        return orderLines.stream().filter((value)->value.getId().equals(id)).findAny().orElseThrow(NotFoundException::new);
     }
 
     @Override
-    public void deleteById(Long aLong) {
-
+    public void deleteById(String id) {
+        orderLines.removeIf((value)->value.getId().equals(id));
     }
 
     @Override
     public OrderLine save(OrderLine value) {
-        return null;
+        return orderLines.add(value) ? value : null;
     }
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.ToString;
 
 @Data
-@ToString
+@ToString(callSuper = true)
 public class Stock extends BaseTimestamp {
     private Product product;
     private Integer quantity;

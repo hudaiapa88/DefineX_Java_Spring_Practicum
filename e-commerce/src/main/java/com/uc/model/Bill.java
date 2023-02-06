@@ -9,9 +9,8 @@ import java.time.LocalDateTime;
 
 
 @Data
-@ToString
+@ToString(callSuper = true)
 public class Bill extends BaseId {
     private LocalDateTime billDate;
-    private Customer customer;
     private Order order;
 }

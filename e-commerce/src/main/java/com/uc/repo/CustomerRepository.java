@@ -1,13 +1,15 @@
 package com.uc.repo;
 
+import com.uc.exception.NotFoundException;
 import com.uc.model.Bill;
 import com.uc.model.Customer;
 import com.uc.repo.base.BaseRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerRepository implements BaseRepository<Customer,Long> {
-    private static List<Customer> customers;
+public class CustomerRepository implements BaseRepository<Customer,String> {
+    private static List<Customer> customers= new ArrayList<>();
     private static CustomerRepository instance;
 
     public static CustomerRepository getInstance(){
@@ -21,21 +23,21 @@ public class CustomerRepository implements BaseRepository<Customer,Long> {
 
     @Override
     public List<Customer> findAll() {
-        return null;
+        return customers;
     }
 
     @Override
-    public Customer findById(Long aLong) {
-        return null;
+    public Customer findById(String id) {
+        return customers.stream().filter((value)->value.getId().equals(id)).findAny().orElseThrow(NotFoundException::new);
     }
 
     @Override
-    public void deleteById(Long aLong) {
-
+    public void deleteById(String id) {
+        customers.removeIf((value)->value.getId().equals(id));
     }
 
     @Override
     public Customer save(Customer value) {
-        return null;
+        return customers.add(value) ? value : null;
     }
 }

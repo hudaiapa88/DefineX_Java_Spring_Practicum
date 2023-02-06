@@ -1,7 +1,9 @@
 package com.uc;
 
+import com.uc.repo.loader.RepoLoader;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        RepoLoader repoLoader= new RepoLoader();
     }
 }

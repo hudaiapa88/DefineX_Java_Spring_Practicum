@@ -6,12 +6,13 @@ import com.uc.repo.base.BaseRepository;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class BillRepository implements BaseRepository<Bill,Long> {
+public class BillRepository implements BaseRepository<Bill,String> {
 
-    private static List<Bill> bills;
+    private static List<Bill> bills = new ArrayList<>();;
     private static BillRepository instance;
 
     public static BillRepository getInstance(){
@@ -29,17 +30,17 @@ public class BillRepository implements BaseRepository<Bill,Long> {
     }
 
     @Override
-    public Bill findById(Long id) {
+    public Bill findById(String id) {
         return bills.stream().filter((bill)->bill.getId().equals(id)).findAny().orElseThrow(NotFoundException::new);
     }
 
     @Override
-    public void deleteById(Long aLong) {
-
+    public void deleteById(String id) {
+       bills.removeIf((bill)->bill.getId().equals(id));
     }
 
     @Override
     public Bill save(Bill value) {
-        return null;
+        return bills.add(value) ? value : null;
     }
 }
