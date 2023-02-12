@@ -35,8 +35,16 @@ public class RepoLoader {
         bill.setBillDate(LocalDateTime.now());
         bill.setOrder(orderRepository.findAll().stream().findFirst().get());
         billRepository.save(bill);
+        Bill bill1= new Bill();
+        bill.setBillDate(LocalDateTime.now());
+        bill.setOrder(orderRepository.findAll().stream().findFirst().get());
+        billRepository.save(bill1);
+        Bill bill2= new Bill();
+        bill.setBillDate(LocalDateTime.of(2023,01,01,00,00));
+        bill.setOrder(orderRepository.findAll().stream().findFirst().get());
+        billRepository.save(bill2);
         log.info("Fatura yüklendi");
-        log.info(bill.toString());
+      //  log.info(bill.toString());
     }
 
     private void customerLoader() {
@@ -58,6 +66,7 @@ public class RepoLoader {
         log.info("Müşteri 1  yüklendi");
         log.info(customer.toString());
         Customer customer1 = new Customer();
+        customer1.setCreatedDateTime(LocalDateTime.of(2022,6,07,9,00));
         customer1.setFirstname("Haldun");
         customer1.setLastname("APA");
         customer1.setPhone("+905466782635");
@@ -69,10 +78,26 @@ public class RepoLoader {
                 .neighbourhood("Asmalıevler Mahalle")
                 .fullAddress("No:78 Kat:7 Daire:2")
                 .build();
-        customer1.setAddress(address);
+        customer1.setAddress(address1);
         customerRepository.save(customer1);
-        log.info("Müşteri 2  yüklendi");
+
+        log.info("Müşteri 3  yüklendi");
         log.info(customer1.toString());
+        Customer customer2 = new Customer();
+        customer2.setCreatedDateTime(LocalDateTime.of(2022,6,07,9,00));
+        customer2.setFirstname("Hayri");
+        customer2.setLastname("AKÇEŞME");
+        customer2.setPhone("+905456782635");
+        customer2.setEmail("hayriakcesme@gmail.com");
+        Address address2 = Address.builder()
+                .country("Türkiye")
+                .province("Denizli")
+                .district("Pamukkale")
+                .neighbourhood("Pınarcık Mahalle")
+                .fullAddress("No:78 Kat:7 Daire:2")
+                .build();
+        customer2.setAddress(address2);
+        customerRepository.save(customer2);
     }
 
     private void orderLineLoader() {
@@ -110,6 +135,18 @@ public class RepoLoader {
         product.setTitle("Iphone 12 Max");
         product.setPrice(new BigDecimal(13000L));
         productRepository.save(product);
+        Product product1 = new Product();
+        product.setTitle("Monster Laptop");
+        product.setPrice(new BigDecimal(20000L));
+        productRepository.save(product1);
+        Product product2 = new Product();
+        product.setTitle("Asus Laptop");
+        product.setPrice(new BigDecimal(19000L));
+        productRepository.save(product2);
+        Product product3 = new Product();
+        product.setTitle("Havlu");
+        product.setPrice(new BigDecimal(100L));
+        productRepository.save(product3);
         log.info("Ürün yüklendi");
         log.info(product.toString());
     }
@@ -119,6 +156,18 @@ public class RepoLoader {
         stock.setProduct(productRepository.findAll().stream().findFirst().get());
         stock.setQuantity(1000);
         stockRepository.save(stock);
+        Stock stock1 = new Stock();
+        stock.setProduct(productRepository.findAll().get(1));
+        stock.setQuantity(200);
+        stockRepository.save(stock1);
+        Stock stock2 = new Stock();
+        stock.setProduct(productRepository.findAll().get(2));
+        stock.setQuantity(125);
+        stockRepository.save(stock2);
+        Stock stock3 = new Stock();
+        stock.setProduct(productRepository.findAll().get(3));
+        stock.setQuantity(1004);
+        stockRepository.save(stock3);
         log.info("Stok yüklendi");
         log.info(stock.toString());
     }
