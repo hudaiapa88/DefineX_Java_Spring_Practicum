@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ProductRepository implements BaseRepository<Product,String > {
 
-    private static List<Product> products= new ArrayList<>();;
+    private static List<Product> products= new ArrayList<>();
     private static ProductRepository instance;
 
     public static ProductRepository getInstance(){

@@ -1,12 +1,15 @@
 package com.uc.model;
 
 import com.uc.model.base.BaseTimestamp;
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
 @Data
 @ToString(callSuper = true)
 public class Customer extends BaseTimestamp {
+
+
     private String firstname;
     private String lastname;
     private String phone;
